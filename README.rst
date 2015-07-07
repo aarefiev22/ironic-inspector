@@ -1,6 +1,14 @@
 Hardware introspection for OpenStack Ironic
 ===========================================
 
+.. note::
+    **ironic-discoverd** project was renamed to **ironic-inspector** and it's
+    new home is at https://pypi.python.org/pypi/ironic-inspector. Some links
+    are already pointing at the new location in this document.
+
+    **ironic-discoverd** 1.1 branch will only receive critical bug fixes,
+    other branches are not supported.
+
 This is an auxiliary service for discovering hardware properties for a
 node managed by `OpenStack Ironic`_. Hardware introspection or hardware
 properties discovery is a process of getting hardware parameters required for
@@ -17,15 +25,17 @@ OpenStack Horizon plugin for TripleO_.
 **ironic-discoverd** requires OpenStack Juno (2014.2) release or newer.
 
 Please use launchpad_ to report bugs and ask questions. Use PyPI_ for
-downloads and accessing the released version of this README. Refer to
-CONTRIBUTING.rst_ for instructions on how to contribute.
+downloads and accessing the released version of this README.
+
+Please contribute to the renamed **ironic-inspector** project - see
+CONTRIBUTING.rst_ for details.
 
 .. _OpenStack Ironic: https://wiki.openstack.org/wiki/Ironic
 .. _Tuskar UI: https://pypi.python.org/pypi/tuskar-ui
 .. _TripleO: https://wiki.openstack.org/wiki/TripleO
-.. _launchpad: https://bugs.launchpad.net/ironic-discoverd
+.. _launchpad: https://bugs.launchpad.net/ironic-inspector
 .. _PyPI: https://pypi.python.org/pypi/ironic-discoverd
-.. _CONTRIBUTING.rst: https://github.com/stackforge/ironic-discoverd/blob/master/CONTRIBUTING.rst
+.. _CONTRIBUTING.rst: https://github.com/openstack/ironic-inspector/blob/master/CONTRIBUTING.rst
 
 Workflow
 --------
@@ -139,7 +149,7 @@ Fill in at least these configuration values:
   other cases).
 
 See comments inside `example.conf
-<https://github.com/stackforge/ironic-discoverd/blob/master/example.conf>`_
+<https://github.com/openstack/ironic-inspector/blob/master/example.conf>`_
 for the other possible configuration options.
 
 .. note::
@@ -272,8 +282,8 @@ CLI tool is based on OpenStackClient_ with prefix
 Refer to HTTP-API.rst_ for information on the HTTP API.
 
 .. _OpenStackClient: http://docs.openstack.org/developer/python-openstackclient/
-.. _HTTP-API.rst: https://github.com/stackforge/ironic-discoverd/blob/master/HTTP-API.rst
-.. _HTTP API: https://github.com/stackforge/ironic-discoverd/blob/master/HTTP-API.rst
+.. _HTTP-API.rst: https://github.com/openstack/ironic-inspector/blob/master/HTTP-API.rst
+.. _HTTP API: https://github.com/openstack/ironic-inspector/blob/master/HTTP-API.rst
 
 Using from Ironic API
 ~~~~~~~~~~~~~~~~~~~~~

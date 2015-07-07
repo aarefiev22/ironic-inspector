@@ -33,14 +33,14 @@ See `1.1.0 release tracking page`_ for details.
   Adjustable by ``add_ports`` option.
 
   See `better-boot-interface-detection blueprint
-  <https://blueprints.launchpad.net/ironic-discoverd/+spec/better-boot-interface-detection>`_
+  <https://blueprints.launchpad.net/ironic-inspector/+spec/better-boot-interface-detection>`_
   for details.
 
 * `Setting IPMI Credentials`_ feature is considered stable now and is exposed
   in the client. It still needs to be enabled via configuration.
 
   See `setup-ipmi-credentials-take2 blueprint
-  <https://blueprints.launchpad.net/ironic-discoverd/+spec/setup-ipmi-credentials-take2>`_
+  <https://blueprints.launchpad.net/ironic-inspector/+spec/setup-ipmi-credentials-take2>`_
   for what changed since 1.0.0 (tl;dr: everything).
 
 * Proper CLI tool implemented as a plugin for OpenStackClient_.
@@ -76,11 +76,11 @@ See `1.1.0 release tracking page`_ for details.
 
 **Known Issues**
 
-.. _1.1.0 release tracking page: https://bugs.launchpad.net/ironic-discoverd/+milestone/1.1.0
-.. _Setting IPMI Credentials: https://github.com/stackforge/ironic-discoverd#setting-ipmi-credentials
+.. _1.1.0 release tracking page: https://bugs.launchpad.net/ironic-inspector/+milestone/1.1.0
+.. _Setting IPMI Credentials: https://github.com/openstack/ironic-inspector#setting-ipmi-credentials
 .. _OpenStackClient: http://docs.openstack.org/developer/python-openstackclient/
 .. _eDeploy hardware detection and classification utilities: https://pypi.python.org/pypi/hardware
-.. _eDeploy blueprint: https://blueprints.launchpad.net/ironic-discoverd/+spec/edeploy
+.. _eDeploy blueprint: https://blueprints.launchpad.net/ironic-inspector/+spec/edeploy
 
 1.0 Series
 ~~~~~~~~~~
@@ -170,19 +170,19 @@ Action recommended:
 
 **Known Issues**
 
-* `bug 1415040 <https://bugs.launchpad.net/ironic-discoverd/+bug/1415040>`_
+* `bug 1415040 <https://bugs.launchpad.net/ironic-inspector/+bug/1415040>`_
   it is required to set IP addresses instead of host names in
   ``ipmi_address``/``ilo_address``/``drac_host`` node ``driver_info`` field
   for **ironic-discoverd** to work properly.
 
-.. _1.0.0 release tracking page: https://bugs.launchpad.net/ironic-discoverd/+milestone/1.0.0
-.. _setup-ipmi-credentials blueprint: https://blueprints.launchpad.net/ironic-discoverd/+spec/setup-ipmi-credentials
-.. _Plugins: https://github.com/stackforge/ironic-discoverd#plugins
-.. _CONTRIBUTING.rst: https://github.com/stackforge/ironic-discoverd/blob/master/CONTRIBUTING.rst
-.. _plugin-architecture blueprint: https://blueprints.launchpad.net/ironic-discoverd/+spec/plugin-architecture
-.. _get-status-api blueprint: https://blueprints.launchpad.net/ironic-discoverd/+spec/get-status-api
-.. _Kilo state machine blueprint: https://blueprints.launchpad.net/ironic-discoverd/+spec/kilo-state-machine
-.. _v1 API reform blueprint: https://blueprints.launchpad.net/ironic-discoverd/+spec/v1-api-reform
+.. _1.0.0 release tracking page: https://bugs.launchpad.net/ironic-inspector/+milestone/1.0.0
+.. _setup-ipmi-credentials blueprint: https://blueprints.launchpad.net/ironic-inspector/+spec/setup-ipmi-credentials
+.. _Plugins: https://github.com/openstack/ironic-inspector#plugins
+.. _CONTRIBUTING.rst: https://github.com/openstack/ironic-inspector/blob/master/CONTRIBUTING.rst
+.. _plugin-architecture blueprint: https://blueprints.launchpad.net/ironic-inspector/+spec/plugin-architecture
+.. _get-status-api blueprint: https://blueprints.launchpad.net/ironic-inspector/+spec/get-status-api
+.. _Kilo state machine blueprint: https://blueprints.launchpad.net/ironic-inspector/+spec/kilo-state-machine
+.. _v1 API reform blueprint: https://blueprints.launchpad.net/ironic-inspector/+spec/v1-api-reform
 
 0.2 Series
 ~~~~~~~~~~
