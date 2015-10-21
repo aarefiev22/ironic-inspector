@@ -43,6 +43,7 @@ os_tenant_name = tenant
 manage_firewall = False
 enable_setting_ipmi_credentials = True
 database = %(db_file)s
+authenticate = False
 """
 
 ROOT = './functest/env'
@@ -164,9 +165,8 @@ class Test(base.NodeTest):
             self.assertIn('user set password 2 pwd\n', lines)
 
 
-@mock.patch.object(utils, 'check_auth')
 @mock.patch.object(utils, 'get_client')
-def run(client_mock, keystone_mock):
+def run(client_mock):
     d = tempfile.mkdtemp()
     try:
         conf_file = os.path.join(d, 'test.conf')
