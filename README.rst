@@ -2,12 +2,13 @@ Hardware introspection for OpenStack Ironic
 ===========================================
 
 .. note::
-    **ironic-discoverd** project was renamed to **ironic-inspector** and it's
+    **ironic-discoverd** project was renamed to **ironic-inspector** and its
     new home is at https://pypi.python.org/pypi/ironic-inspector. Some links
     are already pointing at the new location in this document.
 
     **ironic-discoverd** 1.1 branch will only receive critical bug fixes,
-    other branches are not supported.
+    other branches are not supported at all. Please switch to
+    **ironic-inspector** as soon as time allows.
 
 This is an auxiliary service for discovering hardware properties for a
 node managed by `OpenStack Ironic`_. Hardware introspection or hardware
@@ -122,10 +123,6 @@ Alternatively (e.g. if you need the latest version), you can install package
 from PyPI_ (you may want to use virtualenv to isolate your environment)::
 
     pip install ironic-discoverd
-
-Finally, there is a `DevStack <http://docs.openstack.org/developer/devstack/>`_
-plugin for **ironic-discoverd** - see
-https://etherpad.openstack.org/p/DiscoverdDevStack for the current status.
 
 Configuration
 ~~~~~~~~~~~~~
@@ -379,14 +376,8 @@ Here are some plugins that can be additionally enabled:
 ``root_device_hint``
     gathers block devices from ramdisk and exposes root device in multiple
     runs.
-``edeploy``
-    plugin for `eDeploy hardware detection and classification utilities`_,
-    requires a `special ramdisk`__.
 
 Refer to CONTRIBUTING.rst_ for information on how to write your own plugin.
-
-.. _eDeploy hardware detection and classification utilities: https://pypi.python.org/pypi/hardware
-__ https://github.com/rdo-management/instack-undercloud/tree/master/elements/ironic-discoverd-ramdisk-instack
 
 Troubleshooting
 ---------------
