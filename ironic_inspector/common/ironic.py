@@ -30,7 +30,7 @@ VALID_STATES = {'enroll', 'manageable', 'inspecting', 'inspectfail'}
 SET_CREDENTIALS_VALID_STATES = {'enroll'}
 
 # 1.11 is API version, which support 'enroll' state
-DEFAULT_IRONIC_API_VERSION = '1.11'
+DEFAULT_IRONIC_API_VERSION = '1.19'
 
 IRONIC_GROUP = 'ironic'
 

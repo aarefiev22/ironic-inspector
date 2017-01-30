@@ -135,6 +135,12 @@ class NodeStateInvalidEvent(Error):
     """Invalid event attempted."""
 
 
+class NetworkError(Error):
+    """Network setup issue"""
+
+class FailedToUpdateDHCPOptOnPort(Error):
+    """ Error while updating dhcp options"""
+
 def executor():
     """Return the current futures executor."""
     global _EXECUTOR

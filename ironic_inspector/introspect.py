@@ -22,6 +22,7 @@ from oslo_config import cfg
 
 from ironic_inspector.common.i18n import _, _LI, _LW
 from ironic_inspector.common import ironic as ir_utils
+from ironic_inspector.dhcp import neutron
 from ironic_inspector import firewall
 from ironic_inspector import introspection_state as istate
 from ironic_inspector import node_cache
@@ -64,6 +65,31 @@ def _validate_ipmi_credentials(node, new_ipmi_credentials):
     return new_username, new_password
 
 
+# TODO(aarefiev): move to utils
+def generate_ipxe_options():
+    dhcp_opts = []
+
+    dhcp_opts.append({'opt_name': 'tag:!ipxe,bootfile-name',
+                      'opt_value': CONF.neutron.pxe_boot_file})
+    dhcp_opts.append({'opt_name': 'tag:ipxe,bootfile-name',
+                      'opt_value': CONF.neutron.ipxe_boot_script})
+
+    dhcp_opts.append({'opt_name': 'server-ip-address',
+                      'opt_value': CONF.neutron.tftp_server})
+    dhcp_opts.append({'opt_name': 'tftp-server',
+                      'opt_value': CONF.neutron.tftp_server})
+    return dhcp_opts
+
+
+def prepare_environment(node):
+    # TODO(aarefiev): use stevedore
+    dhcp_provider = neutron.NeutronDHCP()
+    dhcp_provider.add_introspection_ports(node)
+
+    dhcp_opts = generate_ipxe_options()
+    dhcp_provider.update_dhcp_opts(node, dhcp_opts)
+
+
 def introspect(node_id, new_ipmi_credentials=None, token=None):
     """Initiate hardware properties introspection for a given node.
 
@@ -88,10 +114,14 @@ def introspect(node_id, new_ipmi_credentials=None, token=None):
                               node_info=node)
 
     bmc_address = ir_utils.get_ipmi_address(node)
+
     node_info = node_cache.start_introspection(node.uuid,
                                                bmc_address=bmc_address,
                                                ironic=ironic)
     node_info.set_option('new_ipmi_credentials', new_ipmi_credentials)
+
+    # this should be in background  
+    prepare_environment(node_info)
 
     def _handle_exceptions(fut):
         try:

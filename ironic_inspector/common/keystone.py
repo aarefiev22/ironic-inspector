@@ -72,8 +72,10 @@ def _get_legacy_auth(group, legacy_mapping, legacy_opts):
                 pass
 
     conf = getattr(CONF, group)
-    auth_params = {a: getattr(conf, legacy_mapping[a])
-                   for a in legacy_mapping}
+    auth_params = {}
+    if legacy_mapping:
+        auth_params = {a: getattr(conf, legacy_mapping[a])
+                       for a in legacy_mapping}
     legacy_loader = loading.get_plugin_loader('password')
     # NOTE(pas-ha) only Swift had this option, take it into account
     try:

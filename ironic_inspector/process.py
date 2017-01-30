@@ -26,6 +26,7 @@ from oslo_utils import excutils
 
 from ironic_inspector.common.i18n import _, _LE, _LI, _LW
 from ironic_inspector.common import ironic as ir_utils
+from ironic_inspector.common import neutron
 from ironic_inspector.common import swift
 from ironic_inspector import firewall
 from ironic_inspector import introspection_state as istate
@@ -359,8 +360,11 @@ def _finish_common(node_info, ironic, introspection_data, power_off=True):
              node_info=node_info, data=introspection_data)
 
 
-_finish = node_cache.fsm_transition(istate.Events.finish)(_finish_common)
-
+@node_cache.fsm_transition(istate.Events.finish)
+def _finish(node_info, ironic, introspection_data, power_off=True):
+    _finish_common(node_info, ironic, introspection_data, power_off)
+    # move network conf to common 
+    neutron.remove_ports_from_network(node_info, CONF.neutron.introspection_network)
 
 def reapply(node_ident):
     """Re-apply introspection steps.

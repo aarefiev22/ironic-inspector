@@ -82,6 +82,7 @@ class NodeInfo(object):
         if ports is not None and not isinstance(ports, dict):
             ports = {p.address: p for p in ports}
         self._ports = ports
+        self._vifs = None
         self._attributes = None
         self._ironic = ironic
         # This is a lock on a node UUID, not on a NodeInfo object
@@ -365,8 +366,9 @@ class NodeInfo(object):
         """
         if self._ports is None:
             ironic = ironic or self.ironic
-            self._ports = {p.address: p for p in
-                           ironic.node.list_ports(self.uuid, limit=0)}
+            self._ports = {p.address: ironic.port.get(
+                               p.uuid, {'pxe_enabled', 'local_link_connection', 'extra', 'uuid'})
+                           for p in ironic.node.list_ports(self.uuid, limit=0)}
         return self._ports
 
     def _create_port(self, mac, ironic=None):
